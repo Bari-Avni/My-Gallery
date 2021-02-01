@@ -25,3 +25,10 @@ var gProjs = [
 function getProjs() {
     return gProjs;
 }
+
+function getProjById(projId) {
+    var proj = gProjs.find(function (proj) {
+        return (projId === proj.id);
+    })
+    return proj;
+}

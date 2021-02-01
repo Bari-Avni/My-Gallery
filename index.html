@@ -35,6 +35,23 @@
     <!-- Contact -->
     <section id="contact">
       <h4>Contact Me</h4>
+      <form>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+            placeholder="Enter email" name="email">
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputSubject1">Subject</label>
+          <input type="subject" class="form-control" id="exampleInputSubject1" placeholder="Type Subject" name="subject">
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">Message body</label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Type Message" name="message"></textarea>
+        </div>
+        <button onclick="onContact()" type="button" class="btn btn-primary">Submit</button>
+      </form>
     </section>
 
   </aside>
@@ -165,11 +182,11 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-8 mx-auto">
-              <div onload="onModal()" class="modal-body1">
+              <div class="modal-body1">
                 <!-- Project Details Go Here -->
                 <h2></h2>
-                <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                <img class="img-fluid d-block mx-auto" src="img/portfolio/01-full.jpg" alt="">
+                <p class="item-intro text-muted"></p>
+                <img class="img-fluid d-block mx-auto" src="" alt="">
                 <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing
                   elit. Est
                   blanditiis
@@ -182,6 +199,9 @@
                   <li>Client: Threads</li>
                   <li>Category: Illustration</li>
                 </ul>
+                <button class="btn btn-primary open-proj" data-dismiss="modal" type="button">
+                  <i class="fa fa-times"></i>
+                  Open Project</button>
                 <button class="btn btn-primary" data-dismiss="modal" type="button">
                   <i class="fa fa-times"></i>
                   Close Project</button>

@@ -2,7 +2,7 @@
 console.log('Starting up');
 
 function initPage() {
-    renderProjs()
+    renderProjs();
 }
 
 function renderProjs() {
@@ -23,8 +23,8 @@ function renderProjs() {
     */
 
     var strHTMLs = projs.map(function (proj) {
-        return `<div class="col-md-4 col-sm-6 portfolio-item item-${gProjs.id}" >
-                    <a class="portfolio-link" data-toggle="modal" href="#projModal">
+        return `<div class="col-md-4 col-sm-6 portfolio-item item-${proj.id}" >
+                    <a onclick="onModal('${proj.id}')" class="portfolio-link" data-toggle="modal" href="#projModal">
                         <div class="portfolio-hover">
                             <div class="portfolio-hover-content">
                                 <i class="fa fa-plus fa-3x"></i>
@@ -38,15 +38,43 @@ function renderProjs() {
                     </div>
                 </div>`;
     })
-    var elProj = document.querySelector('.proj-grid');
-    elProj.innerHTML = strHTMLs.join('');
+
+    var $elProj = $('.proj-grid');
+    $elProj.html(strHTMLs);
+
+    // var elProj = document.querySelector('.proj-grid');
+    // elProj.innerHTML = strHTMLs.join('');
 }
 
-function onModal() {
-    var elModal = document.querySelector('.modal-body1');
-    elModal.querySelector('h2').innerText = 'aa'; // proj.name;
 
 
+function onModal(projId) {
+    var proj = getProjById(projId)
+
+    $('.modal-body1 h2').text(proj.name);
+    $('.item-intro').text(proj.desc);
+    $('.img-fluid').attr('src', `img/projs/${proj.url}`);
+    $('.open-proj').click(function () {
+        onOpenProj(proj);
+      });
+    renderProjs();
+}
+
+function onContact() {
+    var elName = document.querySelector('.form-group input[name=email]').value;
+    var elSubject = document.querySelector('.form-group input[name=subject]').value;
+    var elMessage = document.querySelector('.form-group textarea[name=message]').value;
+    console.log('elName', elName);
+    console.log('elSubject', elSubject);
+    console.log('elMessage', elMessage);
+    var link = `https://mail.google.com/mail/?view=cm&fs=1&to=${elName}&su=${elSubject}&body=${elMessage}`;
+    console.log('link', link);
+    window.open(link, '_blank');
+}
+
+function onOpenProj(proj){
+    console.log('onOpenProj');
+    console.log('proj', proj);
 }
 
 
