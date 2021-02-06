@@ -9,7 +9,7 @@ function renderProjs() {
     var projs = getProjs();
     var strHTMLs = projs.map(function (proj) {
         return `<div class="col-md-4 col-sm-6 portfolio-item item-${proj.id}" >
-                    <a onclick="onModal('${proj.id}')" class="portfolio-link" data-toggle="modal" href="#projModal">
+                    <a onclick="renderModal('${proj.id}')" class="portfolio-link" data-toggle="modal" href="#projModal">
                         <div class="portfolio-hover">
                             <div class="portfolio-hover-content">
                                 <i class="fa fa-plus fa-3x"></i>
@@ -23,26 +23,43 @@ function renderProjs() {
                     </div>
                 </div>`;
     })
-    
+
     // using jQuery
     var $elProj = $('.proj-grid');
     $elProj.html(strHTMLs);
+
     // using Javascript
     // var elProj = document.querySelector('.proj-grid');
     // elProj.innerHTML = strHTMLs.join('');
 }
 
 
-
-function onModal(projId) {
+debugger
+function renderModal(projId) {
     var proj = getProjById(projId)
+    var strHTMLs = `
+        <div class="col-lg-8 mx-auto">
+            <div class="modal-body">
+                <h2>${proj.name}</h2>
+                <p class="item-intro text-muted">${proj.title}</p>
+                <img class="img-fluid d-block mx-auto" src="img/projs/${proj.url}" alt="">
+                <p>${proj.desc}</p>
+                <ul class="list-inline">
+                    <li>Date Published: ${proj.publishedAt}</li>
+                    <li>Clients: Kids</li>
+                    <li>Category: Games</li>
+                </ul>
+                <button onclick="onOpenProj('${proj.name}')" class="btn btn-primary open-proj" data-dismiss="modal" type="button">
+                    <i class="fa fa-times"></i>
+                    Open Project</button>
+                <button class="btn btn-primary" data-dismiss="modal" type="button">
+                    <i class="fa fa-times"></i>
+                    Close Project</button>
+            </div>
+        </div>`;
 
-    $('.modal-body1 h2').text(proj.name);
-    $('.item-intro').text(proj.desc);
-    $('.img-fluid').attr('src', `img/projs/${proj.url}`);
-    $('.open-proj').click(function () {
-        onOpenProj(proj);
-    });
+    $('.modal-row').html(strHTMLs);
+
     renderProjs();
 }
 
@@ -54,8 +71,8 @@ function onContact() {
     window.open(link, '_blank');
 }
 
-function onOpenProj(proj) {
+function onOpenProj(projName) {
     // var link = `https://bari-avni.github.io/Sprint1/`;
-    var link = `https://bari-avni.github.io/${proj.name}/`;
+    var link = `https://bari-avni.github.io/${projName}/`;
     window.open(link, '_blank');
 }

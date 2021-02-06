@@ -8,7 +8,7 @@ var gProjs = [
         title: 'Minesweeper game',
         desc: 'The fun Minesweeper game',
         url: 'minesweeper.jpg',
-        publishedAt: 1448693940000,
+        publishedAt: ' january 21,2021',
         labels: ['game', 'fun']
     },
     {
@@ -17,7 +17,7 @@ var gProjs = [
         title: 'Chess game',
         desc: 'Good to know Chess',
         url: 'chess.jpg',
-        publishedAt: 1448693940000,
+        publishedAt: ' january 17,2021',
         labels: ['game', 'fun']
     },
 ];
